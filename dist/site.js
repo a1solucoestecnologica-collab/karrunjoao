@@ -1,0 +1,6 @@
+document.querySelector('.menu')?.addEventListener('click',function(){const open=this.getAttribute('aria-expanded')!=='true';this.setAttribute('aria-expanded',String(open));this.textContent=open?'Fechar':'Menu';document.querySelector('nav').classList.toggle('open',open)});
+
+const form=document.querySelector('#briefing');
+function message(){const d=new FormData(form);return `Olá, Karrun! Meu nome é ${d.get('nome').trim()}.${d.get('empresa').trim()?' Empresa: '+d.get('empresa').trim()+'.':''}\n\n${d.get('demanda')}\n\n${d.get('desafio').trim()}`}
+form?.addEventListener('submit',e=>{e.preventDefault();if(!form.reportValidity())return;const url='https://wa.me/5544988211479?text='+encodeURIComponent(message());const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener noreferrer';a.click();document.querySelector('#status').textContent='Sua mensagem está pronta no WhatsApp. Confira o texto e toque em enviar para iniciar a conversa.'});
+document.querySelector('#copy')?.addEventListener('click',async()=>{if(!form.reportValidity())return;try{await navigator.clipboard.writeText(message());document.querySelector('#status').textContent='Mensagem copiada. Você pode colá-la na conversa com a Karrun.'}catch{document.querySelector('#status').textContent='Não foi possível copiar automaticamente. Use o botão Continuar no WhatsApp.'}});
