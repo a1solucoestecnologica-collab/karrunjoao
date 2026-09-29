@@ -1,6 +1,6 @@
 # Karrun
 
-Site institucional em português, com cinco páginas: Início, Atuação, Como trabalhamos, O ateliê e Contato.
+Site institucional em português, com cinco páginas: Início, Atuação, Como trabalhamos, A Karrun e Contato.
 
 ## Abrir no computador
 
