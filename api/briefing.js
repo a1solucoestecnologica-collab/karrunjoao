@@ -37,9 +37,12 @@ export default async function handler(request, response) {
       body: JSON.stringify(payload)
     });
     const data = await result.json().catch(() => ({}));
-    if (!result.ok || data.success === false) throw new Error('delivery_failed');
+    if (!result.ok || data.success === false || data.success === 'false') {
+      throw new Error(`delivery_failed:${result.status}:${clean(data.message)}`);
+    }
     return response.status(200).json({ ok: true });
-  } catch {
-    return response.status(502).json({ ok: false, message: 'Não foi possível enviar agora. Tente novamente ou use o WhatsApp.' });
+  } catch (error) {
+    console.error('briefing_delivery_error', error);
+    return response.status(502).json({ ok: false, message: 'Não foi possível enviar agora. Tente novamente ou use o WhatsApp.', diagnostic: String(error?.message || error) });
   }
 }
