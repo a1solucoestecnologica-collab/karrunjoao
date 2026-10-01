@@ -25,7 +25,17 @@ export default async function handler(request, response) {
     Respostas: formattedAnswers
   };
   try {
-    const result = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(recipient)}`, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(payload) });
+    const siteOrigin = 'https://www.karrun.com.br';
+    const result = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(recipient)}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Origin: siteOrigin,
+        Referer: `${siteOrigin}/briefing`
+      },
+      body: JSON.stringify(payload)
+    });
     const data = await result.json().catch(() => ({}));
     if (!result.ok || data.success === false) throw new Error('delivery_failed');
     return response.status(200).json({ ok: true });
