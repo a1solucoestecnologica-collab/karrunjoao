@@ -1,4 +1,22 @@
-document.querySelector('.menu')?.addEventListener('click',function(){const open=this.getAttribute('aria-expanded')!=='true';this.setAttribute('aria-expanded',String(open));this.textContent=open?'Fechar':'Menu';document.querySelector('nav').classList.toggle('open',open)});
+const menu=document.querySelector('.menu');
+const navigation=document.querySelector('#navigation');
+
+if(menu&&navigation){
+  menu.innerHTML='<span class="menu-label">Menu</span><span class="menu-icon" aria-hidden="true"><i></i><i></i></span>';
+  menu.addEventListener('click',function(){
+    const open=this.getAttribute('aria-expanded')!=='true';
+    this.setAttribute('aria-expanded',String(open));
+    this.querySelector('.menu-label').textContent=open?'Fechar':'Menu';
+    navigation.classList.toggle('open',open);
+    document.body.classList.toggle('menu-open',open);
+  });
+  navigation.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{
+    menu.setAttribute('aria-expanded','false');
+    menu.querySelector('.menu-label').textContent='Menu';
+    navigation.classList.remove('open');
+    document.body.classList.remove('menu-open');
+  }));
+}
 
 const form=document.querySelector('#briefing');
 function message(){const d=new FormData(form);const value=name=>(d.get(name)||'').trim();const details=[`*Nome:* ${value('nome')}`,value('empresa')&&`*Empresa:* ${value('empresa')}`,value('cargo')&&`*Cargo/área:* ${value('cargo')}`,value('localidade')&&`*Localidade:* ${value('localidade')}`,`*Assunto:* ${value('demanda')}`,`*Prazo:* ${value('prazo')}`].filter(Boolean).join('\n');return `Olá, Karrun! Preenchi o formulário do site para começarmos uma conversa.\n\n${details}\n\n*Contexto da demanda:*\n${value('desafio')}`}
