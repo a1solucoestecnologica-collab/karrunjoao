@@ -3,11 +3,12 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/lset", "destination": "/lset/index.html" },
-    { "source": "/lset/catalogo", "destination": "/lset/index.html" },
-    { "source": "/lset/rotina", "destination": "/lset/index.html" },
-    { "source": "/lset/comparar", "destination": "/lset/index.html" },
-    { "source": "/lset/informacoes", "destination": "/lset/index.html" },
-    { "source": "/lset/produto/:id", "destination": "/lset/index.html" }
+    { "source": "/lset", "destination": "/lset/index" },
+    { "source": "/lset/catalogo", "destination": "/lset/index" },
+    { "source": "/lset/rotina", "destination": "/lset/index" },
+    { "source": "/lset/comparar", "destination": "/lset/index" },
+    { "source": "/lset/informacoes", "destination": "/lset/index" },
+    { "source": "/lset/produto/:id", "destination": "/lset/index" }
   ]
 }
+
