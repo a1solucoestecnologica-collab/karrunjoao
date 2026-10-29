@@ -13,7 +13,10 @@ http.createServer((req,res) => {
  if (!path.extname(file) && fs.existsSync(file + '.html')) file += '.html';
  if (!fs.existsSync(file)) {
   const rule = config.rewrites?.find(r => new RegExp('^' + r.source.replace(':id','[^/]+') + '/?$').test(pathname));
-  if (rule) file = path.join(root,rule.destination);
+  if (rule) {
+   file = path.join(root,rule.destination);
+   if (!path.extname(file) && fs.existsSync(file + '.html')) file += '.html';
+  }
  }
  fs.readFile(file,(err,data) => {
   if(err) { res.writeHead(404,{'Content-Type':'text/html; charset=utf-8'}); return res.end('<h1>Página não encontrada</h1><a href="/">Voltar à Karrun</a>'); }
