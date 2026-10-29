@@ -1,3 +1,7 @@
 .sites-runtime/
 *.log
 .env*
+node_modules/
+lset-app/.output/
+lset-app/.tanstack/
+lset-app/dist/

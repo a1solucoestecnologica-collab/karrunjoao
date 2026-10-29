@@ -1,5 +1,13 @@
 {
   "outputDirectory": "dist",
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/lset", "destination": "/lset/index.html" },
+    { "source": "/lset/catalogo", "destination": "/lset/index.html" },
+    { "source": "/lset/rotina", "destination": "/lset/index.html" },
+    { "source": "/lset/comparar", "destination": "/lset/index.html" },
+    { "source": "/lset/informacoes", "destination": "/lset/index.html" },
+    { "source": "/lset/produto/:id", "destination": "/lset/index.html" }
+  ]
 }

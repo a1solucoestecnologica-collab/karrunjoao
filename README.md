@@ -1,5 +1,12 @@
 # Karrun
 
+## LSET7 em /lset
+
+A loja de apresentação está em `lset-app`; os arquivos publicados ficam em `dist/lset`.
+Para atualizar: execute `npm ci` e `npm run build` dentro de `lset-app`, depois `node package-lset.mjs` na raiz.
+Envie a fonte e `dist/lset` juntos. A Vercel continua usando `dist` e as regras em `vercel.json` permitem abrir catálogo, produtos e rotina diretamente.
+Os vídeos da faixa visual usam URLs públicas da publicação original no Lovable; os demais arquivos são servidos em `/lset`.
+
 Site institucional em português, com cinco páginas: Início, Atuação, Como trabalhamos, A Karrun e Contato.
 
 ## Abrir no computador
